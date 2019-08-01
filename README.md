@@ -7,7 +7,7 @@ Postman Collections for toxiproxy to simulate a latency toxic.
 docker run --rm --net=host --name=toxiproxy -it shopify/toxiproxy
 ```
 
-Then you can address toxiproxy container by accessing through `localhost:8764` (default in postman collection).
+Then you can address toxiproxy container by accessing through `localhost:8474` (default in postman collection).
 
 # Rest
 
