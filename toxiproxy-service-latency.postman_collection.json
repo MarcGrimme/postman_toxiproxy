@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "3c360410-c0d7-4f96-b2ab-beb3ce060130",
+		"name": "toxiproxy-service-latency",
+		"description": "toxyproxy manuipulate for community",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/proxies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies/{{proxy_name}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies",
+						"{{proxy_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"{{proxy_name}}\",\n\t\"listen\": \"{{toxiproxy_host}}:{{upstream_port}}\",\n\t\"upstream\": \"{{downstream_host}}:{{downstream_port}}\",\n\t\"enabled\": true\n}"
+				},
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies/{{proxy_name}}/toxics",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"{{toxi_name}}\",\n\t\"type\": \"latency\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": 1.0,\n\t\"attributes\": { \"latency\": {{toxi_latency}} }\n}"
+				},
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies",
+						"{{proxy_name}}",
+						"toxics"
+					]
+				},
+				"description": "Set timeouts"
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"{{toxi_name}}\",\n\t\"type\": \"latency\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": {{toxicity}},\n\t\"attributes\": { \"latency\": {{toxi_latency}} }\n}"
+				},
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies",
+						"{{proxy_name}}",
+						"toxics",
+						"{{toxi_name}}"
+					]
+				},
+				"description": "Set timeouts"
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies/{{proxy_name}/toxics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies",
+						"{{proxy_name}}",
+						"toxics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies",
+						"{{proxy_name}}",
+						"toxics",
+						"{{toxi_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies/{{proxy_name}}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies",
+						"{{proxy_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/proxies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"toxiproxy_community_api_user\",\n\t\"listen\": \"localhost:{{toxi_community_port}}\",\n\t\"upstream\": \"{{community_host]]}}:{{community_port}}\",\n\t\"enabled\": true\n}"
+				},
+				"url": {
+					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies",
+					"protocol": "http",
+					"host": [
+						"{{toxiproxy_host}}"
+					],
+					"port": "{{toxiproxy_port}}",
+					"path": [
+						"proxies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "99f0967c-cdbd-4076-88a4-89842ac5fec0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "21bd35da-d4bf-4695-9e05-dc25fe9d317a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "a5d5d31e-f218-4398-a171-1b3ca0a3ba0b",
+			"key": "toxiproxy_port",
+			"value": "8474",
+			"type": "string"
+		},
+		{
+			"id": "153af333-0a8e-4ce9-9134-873d26d49038",
+			"key": "toxiproxy_host",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"id": "de9b5310-f204-42a4-90a3-00c477991c95",
+			"key": "downstream_host",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"id": "1cf4ef14-abfe-4efd-834d-29d7559ee8df",
+			"key": "downstream_port",
+			"value": "3010",
+			"type": "string"
+		},
+		{
+			"id": "7e39d91e-82a4-44de-9148-793dfcba282b",
+			"key": "upstream_port",
+			"value": "30010",
+			"type": "string"
+		},
+		{
+			"id": "3d501b26-ed37-4018-ac11-06311948fa28",
+			"key": "toxi_latency",
+			"value": "5000",
+			"type": "string"
+		},
+		{
+			"id": "624db19d-5f48-4bb2-a41c-2f2b991212d4",
+			"key": "toxicity",
+			"value": "1.0",
+			"type": "string"
+		},
+		{
+			"id": "dda3d9ee-8ec1-498f-9f21-9b0fd6f5e981",
+			"key": "toxi_name",
+			"value": "latency",
+			"type": "string"
+		},
+		{
+			"id": "dc9e07eb-8930-4604-aa06-314787b46f02",
+			"key": "proxy_name",
+			"value": "service",
+			"type": "string"
+		}
+	]
+}
