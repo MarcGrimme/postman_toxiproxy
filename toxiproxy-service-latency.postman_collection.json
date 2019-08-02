@@ -7,6 +7,263 @@
 	},
 	"item": [
 		{
+			"name": "latency",
+			"item": [
+				{
+					"name": "/proxies/{{proxy_name}}/toxics",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b1230bd3-8ca4-484c-9664-21d1dc1e3a04",
+								"exec": [
+									"var toxicity = Number.parseFloat(pm.variables.get(\"toxi_latency_toxicity\"));",
+									"console.log(toxicity);",
+									"pm.variables.set('toxi_latency_tocicity', toxicity);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{{toxi_latency_name}}\",\n\t\"type\": \"latency\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": {{toxi_latency_toxicity}},\n\t\"attributes\": { \"latency\": {{toxi_latency}} }\n}"
+						},
+						"url": {
+							"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics",
+							"protocol": "http",
+							"host": [
+								"{{toxiproxy_host}}"
+							],
+							"port": "{{toxiproxy_port}}",
+							"path": [
+								"proxies",
+								"{{proxy_name}}",
+								"toxics"
+							]
+						},
+						"description": "Set timeouts"
+					},
+					"response": []
+				},
+				{
+					"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c3f07383-a0a0-49b2-b3f9-a0b2dd894dc0",
+								"exec": [
+									"var toxicity = Number.parseFloat(pm.variables.get(\"toxi_latency_toxicity\"));",
+									"console.log(toxicity);",
+									"pm.variables.set('toxi_latency_tocicity', toxicity);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{{toxi_latency_name}}\",\n\t\"type\": \"latency\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": {{toxi_latency_toxicity}},\n\t\"attributes\": { \"latency\": {{toxi_latency}} }\n}"
+						},
+						"url": {
+							"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_latency_name}}",
+							"protocol": "http",
+							"host": [
+								"{{toxiproxy_host}}"
+							],
+							"port": "{{toxiproxy_port}}",
+							"path": [
+								"proxies",
+								"{{proxy_name}}",
+								"toxics",
+								"{{toxi_latency_name}}"
+							]
+						},
+						"description": "Set timeouts"
+					},
+					"response": []
+				},
+				{
+					"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_latency_name}}",
+							"protocol": "http",
+							"host": [
+								"{{toxiproxy_host}}"
+							],
+							"port": "{{toxiproxy_port}}",
+							"path": [
+								"proxies",
+								"{{proxy_name}}",
+								"toxics",
+								"{{toxi_latency_name}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "timeout",
+			"item": [
+				{
+					"name": "/proxies/{{proxy_name}}/toxics",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1fffe853-ae0e-4888-bcb9-f327d72ad51f",
+								"exec": [
+									"var toxicity = Number.parseFloat(pm.variables.get(\"toxi_timeout_toxicity\"));",
+									"console.log(toxicity);",
+									"pm.variables.set('toxi_timeout_tocicity', toxicity);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{{toxi_timeout_name}}\",\n\t\"type\": \"timeout\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": {{toxi_timeout_toxicity}},\n\t\"attributes\": { \"timeout\": {{toxi_timeout}} }\n}"
+						},
+						"url": {
+							"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics",
+							"protocol": "http",
+							"host": [
+								"{{toxiproxy_host}}"
+							],
+							"port": "{{toxiproxy_port}}",
+							"path": [
+								"proxies",
+								"{{proxy_name}}",
+								"toxics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c3f07383-a0a0-49b2-b3f9-a0b2dd894dc0",
+								"exec": [
+									"var toxicity = Number.parseFloat(pm.variables.get(\"toxicity\"));",
+									"console.log(toxicity);",
+									"pm.variables.set('tocicity', toxicity);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{{toxi_timeout_name}}\",\n\t\"type\": \"timeout\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": {{toxi_timeout_toxicity}},\n\t\"attributes\": { \"timeout\": {{toxi_timeout}} }\n}"
+						},
+						"url": {
+							"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_timeout_name}}",
+							"protocol": "http",
+							"host": [
+								"{{toxiproxy_host}}"
+							],
+							"port": "{{toxiproxy_port}}",
+							"path": [
+								"proxies",
+								"{{proxy_name}}",
+								"toxics",
+								"{{toxi_timeout_name}}"
+							]
+						},
+						"description": "Set timeouts"
+					},
+					"response": []
+				},
+				{
+					"name": "/proxies/toxiproxy_community_api_user/toxics/readtimeout",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_timeout_name}}",
+							"protocol": "http",
+							"host": [
+								"{{toxiproxy_host}}"
+							],
+							"port": "{{toxiproxy_port}}",
+							"path": [
+								"proxies",
+								"{{proxy_name}}",
+								"toxics",
+								"{{toxi_timeout_name}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "/proxies",
 			"request": {
 				"method": "GET",
@@ -81,73 +338,6 @@
 			"response": []
 		},
 		{
-			"name": "/proxies/{{proxy_name}}/toxics",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"{{toxi_name}}\",\n\t\"type\": \"latency\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": 1.0,\n\t\"attributes\": { \"latency\": {{toxi_latency}} }\n}"
-				},
-				"url": {
-					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics",
-					"protocol": "http",
-					"host": [
-						"{{toxiproxy_host}}"
-					],
-					"port": "{{toxiproxy_port}}",
-					"path": [
-						"proxies",
-						"{{proxy_name}}",
-						"toxics"
-					]
-				},
-				"description": "Set timeouts"
-			},
-			"response": []
-		},
-		{
-			"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"{{toxi_name}}\",\n\t\"type\": \"latency\",\n\t\"stream\": \"upstream\",\n\t\"toxicity\": {{toxicity}},\n\t\"attributes\": { \"latency\": {{toxi_latency}} }\n}"
-				},
-				"url": {
-					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
-					"protocol": "http",
-					"host": [
-						"{{toxiproxy_host}}"
-					],
-					"port": "{{toxiproxy_port}}",
-					"path": [
-						"proxies",
-						"{{proxy_name}}",
-						"toxics",
-						"{{toxi_name}}"
-					]
-				},
-				"description": "Set timeouts"
-			},
-			"response": []
-		},
-		{
 			"name": "/proxies/{{proxy_name}/toxics",
 			"request": {
 				"method": "GET",
@@ -163,35 +353,6 @@
 						"proxies",
 						"{{proxy_name}}",
 						"toxics"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://{{toxiproxy_host}}:{{toxiproxy_port}}/proxies/{{proxy_name}}/toxics/{{toxi_name}}",
-					"protocol": "http",
-					"host": [
-						"{{toxiproxy_host}}"
-					],
-					"port": "{{toxiproxy_port}}",
-					"path": [
-						"proxies",
-						"{{proxy_name}}",
-						"toxics",
-						"{{toxi_name}}"
 					]
 				}
 			},
@@ -277,57 +438,75 @@
 	],
 	"variable": [
 		{
-			"id": "a5d5d31e-f218-4398-a171-1b3ca0a3ba0b",
+			"id": "3e785833-9a7d-4ad2-abda-90fdc8642b48",
 			"key": "toxiproxy_port",
 			"value": "8474",
 			"type": "string"
 		},
 		{
-			"id": "153af333-0a8e-4ce9-9134-873d26d49038",
+			"id": "a719030c-dea8-47d0-aaaf-0e8a9f597db0",
 			"key": "toxiproxy_host",
 			"value": "127.0.0.1",
 			"type": "string"
 		},
 		{
-			"id": "de9b5310-f204-42a4-90a3-00c477991c95",
+			"id": "0917c319-abb6-488a-ba43-b96d93fd7906",
 			"key": "downstream_host",
 			"value": "127.0.0.1",
 			"type": "string"
 		},
 		{
-			"id": "1cf4ef14-abfe-4efd-834d-29d7559ee8df",
+			"id": "c9f4080a-853f-47bd-a4a4-80fa5a056086",
 			"key": "downstream_port",
 			"value": "3010",
 			"type": "string"
 		},
 		{
-			"id": "7e39d91e-82a4-44de-9148-793dfcba282b",
+			"id": "1e946da0-c0c5-4b16-94f5-4e0067d89b90",
 			"key": "upstream_port",
 			"value": "30010",
 			"type": "string"
 		},
 		{
-			"id": "3d501b26-ed37-4018-ac11-06311948fa28",
+			"id": "83162d78-b180-4c8b-bedf-4854a448ee67",
+			"key": "proxy_name",
+			"value": "service",
+			"type": "string"
+		},
+		{
+			"id": "f23c4ce9-8f75-43aa-bb8e-6f929067098a",
+			"key": "toxi_latency_name",
+			"value": "latency",
+			"type": "string"
+		},
+		{
+			"id": "0911298a-c4ac-4ba8-8f77-2411047fe0cb",
 			"key": "toxi_latency",
 			"value": "5000",
 			"type": "string"
 		},
 		{
-			"id": "624db19d-5f48-4bb2-a41c-2f2b991212d4",
-			"key": "toxicity",
+			"id": "b0796470-9450-4872-a435-c8636b4fe863",
+			"key": "toxi_latency_toxicity",
 			"value": "1.0",
 			"type": "string"
 		},
 		{
-			"id": "dda3d9ee-8ec1-498f-9f21-9b0fd6f5e981",
-			"key": "toxi_name",
-			"value": "latency",
+			"id": "82ecfb59-6a2a-4d65-be68-ae59cdd7d70b",
+			"key": "toxi_timeout_name",
+			"value": "timeout",
 			"type": "string"
 		},
 		{
-			"id": "dc9e07eb-8930-4604-aa06-314787b46f02",
-			"key": "proxy_name",
-			"value": "service",
+			"id": "2ff345c3-af53-4888-a727-9a9db2061df3",
+			"key": "toxi_timeout",
+			"value": "5000",
+			"type": "string"
+		},
+		{
+			"id": "3aba9c16-211c-42fb-8d3f-e55e9331ee45",
+			"key": "toxi_timeout_toxicity",
+			"value": "1.0",
 			"type": "string"
 		}
 	]
