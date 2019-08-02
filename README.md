@@ -9,9 +9,11 @@ docker run --rm --net=host --name=toxiproxy -it shopify/toxiproxy
 
 Then you can address toxiproxy container by accessing through `localhost:8474` (default in postman collection).
 
-# Rest
+# Toxying
 
 Start postman
+
+## Latency
 
 Let's say you want to add a latency of 1000 ms with a likelihood of 50% (equals 0.5) to the connection to *google.com* on your local machine.
 
@@ -22,9 +24,9 @@ Configure the following variables in the postman collection:
 | downstream_host | google.com |
 | downstream_port | 80 |
 | upstream_port | 80 |
+| toxi_latency_name | wait_a_second |
 | toxi_latency  | 1000 |
-| toxicity | 0.50 |
-| toxi_name | wait_a_second |
+| toxi_latency_toxicity | 0.50 |
 | proxy_name | google |
 
 Now execute the two POST requests from the postman collection:
@@ -73,4 +75,21 @@ Now add to your */etc/hosts*
 127.0.0.1 localhost mygoogle.com
 ```
 
-The call ```wget -O- http://mygoogle.com``` should have a delay of +1s.
+The call `wget -O- http://mygoogle.com` should have a delay of +1s.
+
+## Timeout
+
+Let's say you want to add a timeout of 1000 ms with a likelihood of 50% (equals 0.5) to the connection to *google.com* on your local machine.
+
+Configure the following variables in the postman collection and follow the above steps:
+
+| Name | Value |
+|------|-------|
+| downstream_host | google.com |
+| downstream_port | 80 |
+| upstream_port | 80 |
+| toxi_timeout_name | wait_a_second |
+| toxi_timeout  | 1000 |
+| toxi_timeout_toxicity | 0.50 |
+| proxy_name | google |
+
